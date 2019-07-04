@@ -1,5 +1,5 @@
 import psycopg2
-from sql_queries import user_table_insert, fn_agg, ln_agg
+from sql_queries import user_table_insert, fn_agg, ln_agg, fn_query, ln_query
 import requests
 import functools
 import time
@@ -8,13 +8,7 @@ import cassandra
 from cassandra.cluster import Cluster
 from sql_queries import ac_users_table_create, ac_users_table_insert
 
-#select query
-fn_query = """SELECT  first_name as first_char
-            FROM ac_users
-            """
-ln_query = """SELECT  last_name as first_char
-            FROM ac_users
-            """
+
 try: 
     conn = psycopg2.connect("host=127.0.0.1 dbname=zylotechdb user=student password=student")
     cur = conn.cursor()
@@ -41,6 +35,21 @@ except Exception as e:
 URL = "https://reqres.in/api/users?page="
 #data requesting from endpoint pages
 pages = [1, 2, 3, 4]
+def check_user(id1):
+#     print("id1: ", isinstance(id1, int))
+    if not isinstance(id1, int):
+        return False
+    try: 
+        
+        cur.execute("SELECT * FROM users where user_id ='{0}'".format(id1))
+        result = cur.fetchall()
+        if len(result):
+            return False
+        else:
+            return True
+    except psycopg2.Error as e: 
+        print("Error: select *")
+        print (e)
 def ac_aggregation_metrics(query):
     
     fc_dic = {}
@@ -72,7 +81,7 @@ def insert_data(session, query):
             res_json = res.json()
         except requests.exceptions.HTTPError as e:
             print(e)
-
+        
         if res_json['data']:
             users = res_json['data']
             for user in users:
@@ -86,8 +95,8 @@ def insert_data(session, query):
 def aggregation_metrics(query):
     try: 
         cur.execute(query)
-        rows = cur.fetchall()
-        return rows
+        result = cur.fetchall()
+        return result
     except psycopg2.Error as e: 
         print("Error: ", query)
         print (e)
@@ -112,7 +121,10 @@ def job():
             res_json = res.json()
         except requests.exceptions.HTTPError as e:
             print(e)
-            
+        
+        rows_affected = 0
+        rows_duplicate = 0
+        per_page = res_json['per_page']
         if res_json['data']:
             users = res_json['data']
             for user in users:
@@ -125,13 +137,25 @@ def job():
                 values = (id1,  first_name, last_name,email, avatar, "now()")
         
                 try:
-                    cur.execute(user_table_insert, values)
+                    if check_user(id1):
+                        cur.execute(user_table_insert, values)
+                        rows_affected += 1
+                    else:
+#                         print("Record already exists in the DB")
+                        rows_duplicate += 1
+                        pass
+                        
                 except psycopg2.Error as e: 
                     print("Error: Inserting Rows")
                     print (e) 
+            if rows_affected == per_page:
+                print("Page = {0}, Status = All records inserted.".format(page))
+            else:
+                print("Page = {0}, Status = Missing  few records, per_page = {1}, Failed = {2}, Duplicate_rows = {3}"\
+                      .format(page, per_page, (per_page-rows_affected), rows_duplicate))
         else:
             print("No users list in the API end point.")
-
+    
     fn_agg_res = aggregation_metrics(fn_agg)
     ln_agg_res = aggregation_metrics(ln_agg)
     print("RDBMS Aggregation Results: ")
@@ -155,7 +179,7 @@ def job():
     print("NoSQl Aggregation Results: ")
     print("First Name:", fn_result)
     print("Last Name:", ln_result)
-schedule.every(1).hours.do(job)
+schedule.every(1).seconds.do(job)
 while 1:
     schedule.run_pending()
     time.sleep(1)
