@@ -35,6 +35,17 @@ except Exception as e:
 URL = "https://reqres.in/api/users?page="
 #data requesting from endpoint pages
 pages = [1, 2, 3, 4]
+def ac_user_check(user_id):
+    try:
+        rows = session.execute("select count(*) from ac_users where user_id = {0}".format(user_id))
+        for row in rows:
+            if row.count:
+                return False
+            else:
+                return True
+    except Exception as e:
+        print(e)
+        
 def check_user(id1):
 #     print("id1: ", isinstance(id1, int))
     if not isinstance(id1, int):
@@ -82,6 +93,9 @@ def insert_data(session, query):
         except requests.exceptions.HTTPError as e:
             print(e)
         
+        rows_affected = 0
+        rows_duplicate = 0
+        per_page = res_json['per_page']
         if res_json['data']:
             users = res_json['data']
             for user in users:
@@ -90,7 +104,24 @@ def insert_data(session, query):
                 first_name = user['first_name']
                 last_name = user['last_name']
                 avatar = user['avatar']
-                session.execute(query, (int(id1), str(first_name), str(last_name), str(email), str(avatar)))
+                if ac_user_check(id1):
+                    try:
+                        session.execute(query, (int(id1), str(first_name), str(last_name), str(email), str(avatar)))
+                        rows_affected += 1
+                    except Exception as e:
+                        print(e)
+                else:
+#                     print("Record already exists in the DB")
+                    rows_duplicate += 1
+                    pass
+            if rows_affected == per_page:
+                    print("Page = {0}, Status = All records inserted.".format(page))
+            else:
+                print("Page = {0}, Status = Missing  few records, per_page = {1}, Failed = {2}, Duplicate_rows = {3}"\
+                      .format(page, per_page, (per_page-rows_affected), rows_duplicate))
+        else:
+            print("No users list in the API end point.")
+
 # Count of last name starting with same letter:
 def aggregation_metrics(query):
     try: 
@@ -112,7 +143,7 @@ def with_logging(func):
 
 @with_logging
 def job():
-
+    print("--- SQL datamodeling ---")
     for page in pages:
         URL = "https://reqres.in/api/users?page="+str(page)
 #         print(URL)
@@ -171,6 +202,7 @@ def job():
     #NoSQL datamodeling
     
     # INSERT into the table
+    print("--- NoSQL datamodeling ---")
     insert_data(session, ac_users_table_insert)
     fn_result = ac_aggregation_metrics(fn_query)
 
