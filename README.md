@@ -91,4 +91,7 @@ Below are steps I  followed to complete the assessment:
       > python3 etl.py
 
 ## References:
-1. []()
+1. [stackOverflow](https://stackoverflow.com/questions/8856384/sql-select-first-letter-of-a-word)
+2. [HTTP requests and JSON parsing in Python](https://stackoverflow.com/questions/6386308/http-requests-and-json-parsing-in-python)
+3. [scheduling](https://pypi.org/project/schedule/)
+4. [generic logging to my scheduled jobs](https://schedule.readthedocs.io/en/stable/faq.html#what-if-my-task-throws-an-exception)
