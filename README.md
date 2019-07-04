@@ -13,8 +13,9 @@ Please install below packages to run the code
 
 
 ## Dataset
-
-  > https://reqres.in/api/users?page=1
-    https://reqres.in/api/users?page=2
-    https://reqres.in/api/users?page=3
-    https://reqres.in/api/users?page=4
+```
+   https://reqres.in/api/users?page=1
+   https://reqres.in/api/users?page=2
+   https://reqres.in/api/users?page=3
+   https://reqres.in/api/users?page=4
+```
