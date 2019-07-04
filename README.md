@@ -52,3 +52,7 @@ And below is an example of what a single endpoint data(json), page=1, look like.
            ]
   }
 ```
+
+## Project Template
+The Assessment workspace includes 3 files:
+1. > create_tables.py: drops and creates your tables. Run this file to reset tables before each time before run ETL scripts.
