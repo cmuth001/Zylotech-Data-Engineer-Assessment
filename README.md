@@ -70,8 +70,25 @@ Below are steps I  followed to complete the assessment:
       1. Wrote INSERT statements in sql_queries.py to insert records into table.
       2. Wrote SELECT statements in sql_queries.py  for aggregation metrics.
    #### ETL Pipeline
+   ##### RDBMS(PostgreSQL) datamodeling
       1. Connected to the created zylotechdb database.
-      2. Using requests library collected the data from API endpoints and inserted into relational database(PostgreSQL).
+      2. Using requests library collected the data from API endpoints and inserted into relational database.
       3. Validated the data after insertion.
       4. Ran aggregation metrics queries to get the required result.
-      
+   ##### NoSQl(Apache Cassandra) datamodeling
+      1. Connected to the created zylotechdb2 KEYSPACE.
+      2. Created tables in Apache Cassandra.
+      3. Using requests library collected the data from API endpoints and inserted into NoSQL tables.
+      4. Wrote SELECT statements in sql_queries.py  for aggregation metrics.
+   #### Scheduling Job
+      1. Using schedule library calling the job finction to run the ETL pipeline every 12 hours
+      2. Every 12 hours ETL pipeline will be executed and can view the given aggregation metrics result.
+
+## Execute files in the below order each time before ETL pipeline
+   1. create_tables.py
+      > python3 create_tables.py
+   2. etl.py
+      > python3 etl.py
+
+## References:
+1. []()
