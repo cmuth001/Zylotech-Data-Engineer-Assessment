@@ -60,3 +60,18 @@ The Assessment workspace includes 4 files:
 3. ***etl.py***: Collect the data from the endpoints and create a **SQL** and **NoSQL** datamodel
 4. ***README.md***: Step by step instructions to run the code.
 
+## Assessment Steps
+Below are steps I  followed to complete the assessment:
+   #### Create Tables
+      1. Wrote **CREATE** statements in ***sql_queries.py*** to create tables.
+      2. Wrote **DROP** statements in ***sql_queries.py*** to drop each table if it exists.
+      3. Run ***create_tables.py*** to create database and tables.
+   #### Insert and Aggregation Queries
+      1. Wrote **INSERT** statements in ***sql_queries.py*** to insert records into table.
+      2. Wrote **SELECT** statements in ***sql_queries.py***  for aggregation metrics.
+   #### ETL Pipeline
+      1. Connected to the created  ***zylotechdb*** database.
+      2. Using requests library collected the data from API endpoints and inserted into relational database(PostgreSQL).
+      3. Validated the data after insertion.
+      4. Ran aggregation metrics queries to get the required result.
+      
