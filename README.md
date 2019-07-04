@@ -82,7 +82,7 @@ Below are steps I  followed to complete the assessment:
       3. Using requests library collected the data from API endpoints and inserted into NoSQL tables.
       4. SELECT statements in sql_queries.py  for aggregation metrics.
    ### Scheduling Job
-      1. Using schedule library calling the job finction to run the ETL pipeline every 12 hours
+      1. Using schedule library calling the job function to run the ETL pipeline every 12 hours
       2. Every 12 hours ETL pipeline will be executed and can view the given aggregation metrics result.
   ### Data Check:
       1.  Data Type Check:Column data type defination as per the data model design specification.
@@ -92,6 +92,7 @@ Below are steps I  followed to complete the assessment:
             Unique key columns are Indexed for required column to avoid duplicate entries.
 
    **DATA COMPLETENESS CHECK:**
+   
       1 . Record Count Validation: Compared endpoint records to the inserted records.
 
 ## Execute files in the below order each time before running ETL pipeline
@@ -105,3 +106,4 @@ Below are steps I  followed to complete the assessment:
 2. [HTTP requests and JSON parsing in Python](https://stackoverflow.com/questions/6386308/http-requests-and-json-parsing-in-python)
 3. [scheduling](https://pypi.org/project/schedule/)
 4. [generic logging to my scheduled jobs](https://schedule.readthedocs.io/en/stable/faq.html#what-if-my-task-throws-an-exception)
+5.[ETL Testing](http://www.datagaps.com/concepts/etl-testing)
