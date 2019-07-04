@@ -62,25 +62,25 @@ The Assessment workspace includes 4 files:
 
 ## Assessment Steps
 Below are steps I  followed to complete the assessment:
-   #### Create Tables
+   ### Create Tables
       1. Wrote CREATE statements in sql_queries.py to create tables.
       2. Wrote DROP statements in sql_queries.py to drop each table if it exists.
       3. Run create_tables.py to create database and tables.
-   #### Insert and Aggregation Queries
+   ### Insert and Aggregation Queries
       1. Wrote INSERT statements in sql_queries.py to insert records into table.
       2. Wrote SELECT statements in sql_queries.py  for aggregation metrics.
-   #### ETL Pipeline
-   ##### RDBMS(PostgreSQL) datamodeling
+   ### ETL Pipeline
+   #### RDBMS(PostgreSQL) datamodeling
       1. Connected to the created zylotechdb database.
       2. Using requests library collected the data from API endpoints and inserted into relational database.
       3. Validated the data after insertion.
       4. Ran aggregation metrics queries to get the required result.
-   ##### NoSQl(Apache Cassandra) datamodeling
+   #### NoSQl(Apache Cassandra) datamodeling
       1. Connected to the created zylotechdb2 KEYSPACE.
       2. Created tables in Apache Cassandra.
       3. Using requests library collected the data from API endpoints and inserted into NoSQL tables.
       4. Wrote SELECT statements in sql_queries.py  for aggregation metrics.
-   #### Scheduling Job
+   ### Scheduling Job
       1. Using schedule library calling the job finction to run the ETL pipeline every 12 hours
       2. Every 12 hours ETL pipeline will be executed and can view the given aggregation metrics result.
 
