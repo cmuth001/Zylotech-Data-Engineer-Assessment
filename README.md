@@ -64,9 +64,9 @@ The Assessment workspace includes 5 files:
 ## Assessment Steps
 Below are steps I  followed to complete the assessment:
    ### Create Tables
-      1. Create tables using CREATE statements in sql_queries.py.
-      2. Drop tables using DROP statements in sql_queries.py if it exists.
-      3. Run create_tables.py to create database and tables.
+      1. Created tables using CREATE statements in sql_queries.py.
+      2. Droped tables using DROP statements in sql_queries.py if it exists.
+      3. Ran create_tables.py to create database and tables.
    ### Insertion and Aggregation Queries
       1. Insert records into tables using INSERT statements in sql_queries.py.
       2. SELECT statements in sql_queries.py helps for aggregation metrics.
@@ -80,10 +80,19 @@ Below are steps I  followed to complete the assessment:
       1. Connected to the created zylotechdb2 KEYSPACE.
       2. Created tables in Apache Cassandra.
       3. Using requests library collected the data from API endpoints and inserted into NoSQL tables.
-      4. Wrote SELECT statements in sql_queries.py  for aggregation metrics.
+      4. SELECT statements in sql_queries.py  for aggregation metrics.
    ### Scheduling Job
       1. Using schedule library calling the job finction to run the ETL pipeline every 12 hours
       2. Every 12 hours ETL pipeline will be executed and can view the given aggregation metrics result.
+  ### Data Check:
+      1.  Data Type Check:Column data type defination as per the data model design specification.
+      2.  Data Length Check: Database columns are as per the data model design specifications.
+      3. Index/Constraint Check: 
+            Added 'NOT NULL' constraint for the required columns.
+            Unique key columns are Indexed for required column to avoid duplicate entries.
+
+   **DATA COMPLETENESS CHECK:**
+      1 . Record Count Validation: Compared endpoint records to the inserted records.
 
 ## Execute files in the below order each time before running ETL pipeline
    1. create_tables.py
