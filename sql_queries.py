@@ -1,6 +1,6 @@
 #DROP TABLES
 users_table_drop = "DROP TABLE IF EXISTS users"
-
+ac_users_table_drop = "DROP TABLE IF EXISTS ac_users"
 #CREATE TABLES
 users_table_create = ("""CREATE TABLE IF NOT EXISTS users(
                             id SERIAL PRIMARY KEY,
