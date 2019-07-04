@@ -11,6 +11,13 @@ users_table_create = ("""CREATE TABLE IF NOT EXISTS users(
                             avatar text,
                             time_stamp timestamp);
                       """)
+ac_users_table_create = '''CREATE TABLE IF NOT EXISTS ac_users
+                                (user_id int,
+                                first_name text,
+                                last_name  text,
+                                email text,
+                                avatar text,
+                                PRIMARY KEY((user_id), first_name, last_name))'''
 
 #INSERT INTO TABLES
 user_table_insert = ("""INSERT INTO users (user_id, first_name, last_name, email, avatar, time_stamp)
