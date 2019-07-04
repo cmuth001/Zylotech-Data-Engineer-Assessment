@@ -54,11 +54,12 @@ And below is an example of what a single endpoint data(json), page=1, look like.
 ```
 
 ## Project Template
-The Assessment workspace includes 4 files:
+The Assessment workspace includes 5 files:
 1. ***create_tables.py***:This script is used to drops and creates tables. Run this file to reset tables before each time before run ETL scripts.
 2. ***sql_queries.py***: Contains all sql queries, and is imported into required files.
-3. ***etl.py***: Collect the data from the endpoints and create a **SQL** and **NoSQL** datamodel
-4. ***README.md***: Step by step instructions to run the code.
+3. ***etl.ipynb***: This notebook contains step by step execution of for each step of ETL with out scheduler job.
+4. ***etl.py***: Collect the data from the endpoints and create a **SQL** and **NoSQL** datamodel
+5. ***README.md***: Step by step instructions to run the code.
 
 ## Assessment Steps
 Below are steps I  followed to complete the assessment:
