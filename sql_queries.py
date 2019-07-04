@@ -23,6 +23,9 @@ ac_users_table_create = '''CREATE TABLE IF NOT EXISTS ac_users
 user_table_insert = ("""INSERT INTO users (user_id, first_name, last_name, email, avatar, time_stamp)
                         VALUES (%s, %s, %s, %s, %s, %s)""")
 
+ac_users_table_insert = '''INSERT INTO ac_users(user_id, first_name, last_name, email, avatar)
+                            VALUES(%s, %s, %s, %s,%s)'''
+
 
 #Aggregation Metrics Queries
 
