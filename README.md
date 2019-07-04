@@ -64,12 +64,12 @@ The Assessment workspace includes 5 files:
 ## Assessment Steps
 Below are steps I  followed to complete the assessment:
    ### Create Tables
-      1. Wrote CREATE statements in sql_queries.py to create tables.
-      2. Wrote DROP statements in sql_queries.py to drop each table if it exists.
+      1. Create tables using CREATE statements in sql_queries.py.
+      2. Drop tables using DROP statements in sql_queries.py if it exists.
       3. Run create_tables.py to create database and tables.
    ### Insertion and Aggregation Queries
-      1. Wrote INSERT statements in sql_queries.py to insert records into table.
-      2. Wrote SELECT statements in sql_queries.py  for aggregation metrics.
+      1. Insert records into tables using INSERT statements in sql_queries.py.
+      2. SELECT statements in sql_queries.py helps for aggregation metrics.
    ### ETL Pipeline
    #### RDBMS(PostgreSQL) datamodeling
       1. Connected to the created zylotechdb database.
