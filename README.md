@@ -66,7 +66,7 @@ Below are steps I  followed to complete the assessment:
       1. Wrote CREATE statements in sql_queries.py to create tables.
       2. Wrote DROP statements in sql_queries.py to drop each table if it exists.
       3. Run create_tables.py to create database and tables.
-   ### Insert and Aggregation Queries
+   ### Insertion and Aggregation Queries
       1. Wrote INSERT statements in sql_queries.py to insert records into table.
       2. Wrote SELECT statements in sql_queries.py  for aggregation metrics.
    ### ETL Pipeline
@@ -84,7 +84,7 @@ Below are steps I  followed to complete the assessment:
       1. Using schedule library calling the job finction to run the ETL pipeline every 12 hours
       2. Every 12 hours ETL pipeline will be executed and can view the given aggregation metrics result.
 
-## Execute files in the below order each time before ETL pipeline
+## Execute files in the below order each time before running ETL pipeline
    1. create_tables.py
       > python3 create_tables.py
    2. etl.py
