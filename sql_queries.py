@@ -19,6 +19,14 @@ user_table_insert = ("""INSERT INTO users (user_id, first_name, last_name, email
 
 #Aggregation Metrics Queries
 
+fn_agg = ("""SELECT LEFT(first_name, 1), Count(LEFT(first_name, 1))
+                 FROM users
+                 GROUP BY LEFT(first_name, 1)
+                 ORDER BY  LEFT(first_name, 1) ASC;""")
+ln_agg = ("""SELECT LEFT(last_name, 1), Count(LEFT(last_name, 1))
+                FROM users
+                GROUP BY LEFT(last_name, 1)
+                ORDER BY LEFT(last_name, 1) ASC """)
 
-drop_table_queries = [users_table_drop, ]
+drop_table_queries = [users_table_drop]
 create_table_queries = [users_table_create]
