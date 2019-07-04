@@ -14,8 +14,41 @@ Please install below packages to run the code
 
 ## Dataset
 ```
+API endpoints to collect data
    https://reqres.in/api/users?page=1
    https://reqres.in/api/users?page=2
    https://reqres.in/api/users?page=3
    https://reqres.in/api/users?page=4
+```
+And below is an example of what a single endpoint data(json), page=1, look like. 
+```
+{
+   "page":1,
+   "per_page":3,
+   "total":12,
+   "total_pages":4,
+   "data":[
+                        {
+                           "id":1,
+                           "email":"george.bluth@reqres.in",
+                           "first_name":"George",
+                           "last_name":"Bluth",
+                           "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg"
+                        },
+                        {
+                           "id":2,
+                           "email":"janet.weaver@reqres.in",
+                           "first_name":"Janet",
+                           "last_name":"Weaver",
+                           "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg"
+                        }
+                        {
+                           "id":3,
+                           "email":"emma.wong@reqres.in",
+                           "first_name":"Emma",
+                           "last_name":"Wong",
+                           "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg"
+                        }
+           ]
+  }
 ```
