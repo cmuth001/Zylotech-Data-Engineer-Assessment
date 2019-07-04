@@ -2,7 +2,7 @@
 
 ## Installation
 Please install below packages to run the code
-1. Install the PostgreSQL database drivers
+1. Install PostgreSQL database drivers
 > pip install psycopg2
 2. Install a package called requests
 > pip install requests
