@@ -65,10 +65,10 @@ The Assessment workspace includes 5 files:
 Below are steps I  followed to complete the assessment:
    ### Database Selection:
       1. NoSQL: Apache Cassandra
-         * High Availability: Supports multiple master model, the loss of the single node does not affect the ability of the cluster writes during crash. 
-         * 100% uptime and no downtime.
-         * Scalability: Multiple master model can write on any server node. Based on the number of servers nodes in the cluster m the better it will scale.
-         * CQL is very similar to SQL, nothing is new to learn.
+         - High Availability: Supports multiple master model, the loss of the single node does not affect the ability of the cluster writes during crash. 
+         - 100% uptime and no downtime.
+         - Scalability: Multiple master model can write on any server node. Based on the number of servers nodes in the cluster m the better it will scale.
+         - CQL is very similar to SQL, nothing is new to learn.
       2. SQL: PostgreSQL 
          * Performance: PostgreSQL performs well in OLTP/OLAP systems when read/write speeds are required and extensive data analysis is needed.
          * It is better suited for Data Warehousing and data analysis applications that require fast read/write speeds.
