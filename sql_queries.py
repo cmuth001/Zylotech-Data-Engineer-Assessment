@@ -29,14 +29,21 @@ ac_users_table_insert = '''INSERT INTO ac_users(user_id, first_name, last_name, 
 
 #Aggregation Metrics Queries
 
-fn_agg = ("""SELECT LEFT(first_name, 1), Count(LEFT(first_name, 1))
+fn_agg = ("""SELECT LEFT(first_name, 1) first_char, Count(*)
                  FROM users
-                 GROUP BY LEFT(first_name, 1)
-                 ORDER BY  LEFT(first_name, 1) ASC;""")
-ln_agg = ("""SELECT LEFT(last_name, 1), Count(LEFT(last_name, 1))
+                 GROUP BY first_char
+                 ORDER BY  first_char ASC;""")
+ln_agg = ("""SELECT LEFT(last_name, 1) first_char, Count(*)
                 FROM users
-                GROUP BY LEFT(last_name, 1)
-                ORDER BY LEFT(last_name, 1) ASC """)
+                GROUP BY first_char
+                ORDER BY first_char ASC """)
+#select query
+fn_query = """SELECT  first_name as first_char
+            FROM ac_users
+            """
+ln_query = """SELECT  last_name as first_char
+            FROM ac_users
+            """
 
 drop_table_queries = [users_table_drop]
 create_table_queries = [users_table_create]
