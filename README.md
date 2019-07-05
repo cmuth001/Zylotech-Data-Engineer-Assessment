@@ -62,7 +62,9 @@ The Assessment workspace includes 5 files:
 5. ***README.md***: Step by step instructions to run the code.
 
 ## Assessment Steps
+
 Below are steps I  followed to complete the assessment:
+
    ### Database Selection:
    Reasons for selecting the databases. 
       1. NoSQL: Apache Cassandra
