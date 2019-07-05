@@ -66,7 +66,8 @@ The Assessment workspace includes 5 files:
 Below are steps I  followed to complete the assessment:
 
    ### Database Selection:
-   Reasons for selecting the databases. 
+   Reasons for selecting the databases.
+   
       1. NoSQL: Apache Cassandra
          - High Availability: Supports multiple master model, the loss of the single node does not affect the ability of the cluster writes during crash. 
          - 100% uptime and no downtime.
