@@ -124,6 +124,11 @@ Below are the steps I  followed to complete the assessment:
       > python3 create_tables.py
    2. etl.py
       > python3 etl.py
+### Final Output:
+ 
+| ![Aggregation metric and status](outuput.PNG)  |
+|:---:|
+| Aggregation metric and status | 
 
 ## References:
 1. [stackOverflow](https://stackoverflow.com/questions/8856384/sql-select-first-letter-of-a-word)
