@@ -20,7 +20,7 @@ API endpoints to collect data
    https://reqres.in/api/users?page=3
    https://reqres.in/api/users?page=4
 ```
-And below is an example of what a single endpoint data(json), page=1, look like. 
+And below is the sample JSON response from the endpoint API when parameter, page=1:
 ```
 {
    "page":1,
@@ -54,56 +54,58 @@ And below is an example of what a single endpoint data(json), page=1, look like.
 ```
 
 ## Project Template
-The Assessment workspace includes 5 files:
-1. ***create_tables.py***:This script is used to drops and creates tables. Run this file to reset tables before each time before run ETL scripts.
-2. ***sql_queries.py***: Contains all sql queries, and is imported into required files.
-3. ***etl.ipynb***: This notebook contains step by step execution of for each step of ETL with out scheduler job.
-4. ***etl.py***: Collect the data from the endpoints and create a **SQL** and **NoSQL** datamodel
-5. ***README.md***: Step by step instructions to run the code.
+The Assessment workspace includes 4 files:
+1. ***create_tables.py***:This script is used to drop and create tables. Run prior to executing ETL scripts.
+2. ***sql_queries.py***: Contains all sql queries, and is imported whenever required.
+3. ***etl.ipynb***: This notebook contains step by step execution of ETL process with out schedulers job.
+4. ***etl.py***: This file feteches data by calling endpoint APIs to create **SQL** and **NoSQL** data model.
 
 ## Assessment Steps
 
-Below are steps I  followed to complete the assessment:
+Below are the steps I  followed to complete the assessment:
 
    ### Database Selection:
    Reasons for selecting the databases.
    
       1. NoSQL: Apache Cassandra
-         - High Availability: Supports multiple master model, the loss of the single node does not affect the ability of the cluster writes during crash. 
-         - 100% uptime and no downtime.
-         - Scalability: Multiple master model can write on any server node. Based on the number of servers nodes in the cluster m the better it will scale.
-         - CQL is very similar to SQL, nothing is new to learn.
+         - High Availability:
+            * Supports multiple master model, when a single node is lost the ability of the cluster writes are not affected during the crash.
+            * 100% uptime and no downtime.
+         - Scalability: 
+            * Multiple master model can write on any server node.
+            * Scalability is directly proportional to the number of nodes in the servers in a cluster.
+         - The learning curve for CQL is very minimal as it is similar to SQL.
       2. SQL: PostgreSQL 
          - Performance: PostgreSQL performs well in OLTP/OLAP systems when read/write speeds are required and extensive data analysis is needed.
          - It is better suited for Data Warehousing and data analysis applications that require fast read/write speeds.
-         - Supports a wide variety of programing languages
+         - Supports a wide variety of programming languages.
    ### Create Tables
       1. Created tables using CREATE statements in sql_queries.py.
-      2. Droped tables using DROP statements in sql_queries.py if it exists.
+      2. Existing tables are droped using DROP statements in sql_queries.py.
       3. Ran create_tables.py to create database and tables.
-   ### Insertion and Aggregation Queries
-      1. Insert records into tables using INSERT statements in sql_queries.py.
-      2. SELECT statements in sql_queries.py helps for aggregation metrics.
+      4. Inserted records into tables using INSERT statements in sql_queries.py.
+      5. Aggregation is achieved through SELECT statements in sql_queries.py.
+      
    ### ETL Pipeline
-   #### RDBMS(PostgreSQL) datamodeling
+   #### RDBMS (PostgreSQL) data modeling
       1. Connected to the created zylotechdb database.
       2. Using requests library collected the data from API endpoints and inserted into relational database.
       3. Validated the data after insertion.
       4. Ran aggregation metrics queries to get the required result.
-   #### NoSQl(Apache Cassandra) datamodeling
+   #### NoSQL (Apache Cassandra) data modeling
       1. Connected to the created zylotechdb2 KEYSPACE.
       2. Created tables in Apache Cassandra.
       3. Using requests library collected the data from API endpoints and inserted into NoSQL tables.
       4. SELECT statements in sql_queries.py  for aggregation metrics.
    ### Scheduling Job
-      1. Using schedule library calling the job function to run the ETL pipeline every 12 hours
+      1. Job function is called to run the ETL pipeline every 12 hours using schedule library.
       2. Every 12 hours ETL pipeline will be executed and can view the given aggregation metrics result.
   ### Data Check:
       1.  Data Type Check:Column data type defination as per the data model design specification.
       2.  Data Length Check: Database columns are as per the data model design specifications.
       3. Index/Constraint Check: 
-            Added 'NOT NULL' constraint for the required columns.
-            Unique key columns are Indexed for required column to avoid duplicate entries.
+            - Added 'NOT NULL' constraint for the required columns.
+            - Unique key columns are Indexed for required column to avoid duplicate entries.
 
    **DATA COMPLETENESS CHECK:**
    
