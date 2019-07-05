@@ -211,7 +211,7 @@ def job():
     print("NoSQl Aggregation Results: ")
     print("First Name:", fn_result)
     print("Last Name:", ln_result)
-schedule.every(1).seconds.do(job)
+schedule.every(12).hours.do(job)
 while 1:
     schedule.run_pending()
     time.sleep(1)
