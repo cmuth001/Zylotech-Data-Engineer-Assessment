@@ -98,6 +98,14 @@ Below are the steps I  followed to complete the assessment:
       3. Using requests library collected the data from API endpoints and inserted into NoSQL tables.
       4. SELECT statements in sql_queries.py  for aggregation metrics.
    ### Scheduling Job
+      Scheduling a job can be done in multiple ways:
+         - CRON: Schedule jobs to run ETL scripts periodically at fixed times, dates, or intervals using `crontab`.
+         - Flask server: Can Schedule ETL script periodically at certain intervals using `threading.Timer`. We can use this for smaller data sets.
+         - Schedule: Can schedule ETL pipeline periodically at pre-determined intervals using `schedule` library.
+         - Jenkins: Can start scheduled or manual runs and track their progress through the Jenkins web UI. This jenkins scheduler can be used mostly for high volume datasets. 
+         - Apache Airflow: Schedule, monitor and visualize workflows, mostly used in production envirnment.
+         
+      As it is a small dataset I used schedule library to schedule ETL script which will run for every 12 hours.
       1. Job function is called to run the ETL pipeline every 12 hours using schedule library.
       2. Every 12 hours ETL pipeline will be executed and can view the given aggregation metrics result.
   ### Data Check:
