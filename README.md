@@ -70,9 +70,9 @@ Below are steps I  followed to complete the assessment:
          - Scalability: Multiple master model can write on any server node. Based on the number of servers nodes in the cluster m the better it will scale.
          - CQL is very similar to SQL, nothing is new to learn.
       2. SQL: PostgreSQL 
-         * Performance: PostgreSQL performs well in OLTP/OLAP systems when read/write speeds are required and extensive data analysis is needed.
-         * It is better suited for Data Warehousing and data analysis applications that require fast read/write speeds.
-         * Supports a wide variety of programing languages
+         - Performance: PostgreSQL performs well in OLTP/OLAP systems when read/write speeds are required and extensive data analysis is needed.
+         - It is better suited for Data Warehousing and data analysis applications that require fast read/write speeds.
+         - Supports a wide variety of programing languages
    ### Create Tables
       1. Created tables using CREATE statements in sql_queries.py.
       2. Droped tables using DROP statements in sql_queries.py if it exists.
